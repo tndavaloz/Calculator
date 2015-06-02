@@ -56,5 +56,36 @@ class CalculatorModel {
         return $this->operationModel->calculate($this->xVal, $this->yVal);
     }
 
+    /* it appears that I could combine __invoke() with assignModels()
+     * public function __invoke($x, $y, $operator) {
 
+        if (!$this->validateValues($x, $y)) {
+            // return something to let user know of an invalid entry
+            return null;
+        }
+        if ($operator == 'divide') {
+            if ($this->yVal == 0) {
+                // return something to let user know of an invalid entry
+                return null;
+            }
+        }
+        switch($operator) {
+            case 'divide':
+                $this->operationModel = new DivideModel;
+                break;
+            case 'multiply':
+                $this->operationModel = new MultiplyModel;
+                break;
+            case 'subtract':
+                $this->operationModel = new SubtractModel;
+                break;
+            case 'add':
+                $this->operationModel = new AddModel;
+                break;
+            default:
+                break;
+
+        }
+        return $this->operationModel->calculate($x, $y);
+    */
 }
