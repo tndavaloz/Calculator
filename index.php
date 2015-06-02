@@ -1,6 +1,5 @@
 <?php
 require 'vendor/autoload.php';
-include_once('Calculator.php');
 
 $app = new \Slim\Slim(array(
         'debug' => true
