@@ -62,7 +62,7 @@ class CalculatorModelTest extends PHPUnit_Framework_TestCase {
 
         $calculatorTest = new CalculatorModel;
 
-        $this->assertEquals(null, $calculatorTest->assignModel($xValue, $yValue, $operation));
+        $this->assertEquals(0, $calculatorTest->assignModel($xValue, $yValue, $operation));
 
     }
 
@@ -73,7 +73,7 @@ class CalculatorModelTest extends PHPUnit_Framework_TestCase {
 
         $calculatorTest = new CalculatorModel;
 
-        $this->assertEquals(null, $calculatorTest->assignModel($xValue, $yValue, $operation));
+        $this->assertEquals(0, $calculatorTest->assignModel($xValue, $yValue, $operation));
 
     }
 

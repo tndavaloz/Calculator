@@ -5,22 +5,54 @@ require_once(__DIR__ . '/../Model/CalculatorModel.php');
 
 
 class CalculatorController {
+
     public $model;
     public $view;
+    public $route;
+    public $inputValues;
+    public $output;
 
 
-    public function __construct(CalculatorModel $model, CalculatorView $view) {
+    public function __construct(CalculatorModel $model, CalculatorView $view, Slim\Http\Request $router) {
         $this->model = $model;
         $this->view = $view;
+        $this->route = $router;
     }
 
     public function __invoke() {
-        $inputValues = $this->view->retrieveUserInput();
-        if (!$this->model->addModelInput($inputValues[0], $inputValues[1], $inputValues[2])) {
-            // this is where I need to send an error message to the view
+        $this->getView();
+        $this->output = $this->getModel();
+        echo $this->output;
+
+    }
+
+    /*
+     * Render the layout
+     */
+    public function getView() {
+        $this->view->setView();
+        $this->inputValues = array('X'=>$this->route->post('xValue'),
+            'Y'=>$this->route->post('yValue'),
+            'Op'=>$this->route->post('operator')
+        );
+    }
+
+    /*
+     * Use input and pass to model
+     */
+    public function getModel() {
+        if ($this->setModel()) {
+            $output = $this->model->assignModel($this->inputValues['X'], $this->inputValues['Y'], $this->inputValues['Op']);
+            if ($output == 1) {
+                return $this->model->performCalculation();
+            }
+            return $output;
         }
-        // no error found with input
-        $this->view->receiveOutputData($this->model->performCalculation());
+    }
+
+    public function setModel() {
+        $this->model->set($this->inputValues);
+        return $this->model->inputCheck();
     }
 
 }
