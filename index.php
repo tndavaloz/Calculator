@@ -13,6 +13,7 @@ $app->get('/', function () use($app) {
     $calcModel = new CalculatorModel();
     $calcView = new CalculatorView();
     $calculatorController = new CalculatorController($calcModel, $calcView);
+    $calculatorController();
 });
 
 

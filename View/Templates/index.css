@@ -1,0 +1,45 @@
+.xy
+{
+    font-size:1.4em;
+    font-weight:bold;
+    color:white;
+}
+
+table
+{
+    margin-top:300px;
+    margin-right:500px;
+}
+
+body
+{
+    font-family:alegreya,san serif;
+    background-repeat:no-repeat;
+    background-size:cover;
+}
+
+button:hover
+{
+    background-color:transparent;
+    color:white;
+    border:none;
+    font-size:4em;
+    -webkit-transition:ease .5s;
+}
+
+button
+{
+    margin-left:40px;
+    position:relative;
+    font-size:3em;
+    height:80px;
+    width:80px;
+}
+
+#title
+{
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    font-size: 3em;
+}

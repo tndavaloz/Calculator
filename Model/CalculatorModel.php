@@ -18,19 +18,19 @@ class CalculatorModel {
         return true;
     }
 
-    public function assignModel($x, $y, $operator){
+    public function addModelInput($x, $y, $operator) {
         $this->xVal = $x;
         $this->yVal = $y;
         $this->operationModel = null;
 
         if (!$this->validateValues()) {
             // return something to let user know of an invalid entry
-            return null;
+            return 0;
         }
         if ($operator == 'divide') {
             if ($this->yVal == 0) {
                 // return something to let user know of an invalid entry
-                return null;
+                return 0;
             }
         }
         switch($operator) {
@@ -48,44 +48,12 @@ class CalculatorModel {
                 break;
             default:
                 break;
-
         }
+        return 1;
     }
 
-    public function __invoke() {
+    public function performCalculation() {
         return $this->operationModel->calculate($this->xVal, $this->yVal);
     }
 
-    /* it appears that I could combine __invoke() with assignModels()
-     * public function __invoke($x, $y, $operator) {
-
-        if (!$this->validateValues($x, $y)) {
-            // return something to let user know of an invalid entry
-            return null;
-        }
-        if ($operator == 'divide') {
-            if ($this->yVal == 0) {
-                // return something to let user know of an invalid entry
-                return null;
-            }
-        }
-        switch($operator) {
-            case 'divide':
-                $this->operationModel = new DivideModel;
-                break;
-            case 'multiply':
-                $this->operationModel = new MultiplyModel;
-                break;
-            case 'subtract':
-                $this->operationModel = new SubtractModel;
-                break;
-            case 'add':
-                $this->operationModel = new AddModel;
-                break;
-            default:
-                break;
-
-        }
-        return $this->operationModel->calculate($x, $y);
-    */
 }
