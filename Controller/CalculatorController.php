@@ -22,7 +22,10 @@ class CalculatorController {
     public function __invoke() {
         $this->getView();
         $this->output = $this->getModel();
-        echo $this->output;
+
+        if ($this->output != null) {
+            $this->view->outputView($this->output);
+        }
 
     }
 
@@ -48,8 +51,12 @@ class CalculatorController {
             }
             return $output;
         }
+        return null;
     }
 
+    /*
+     * Set the model up for the calculation, not actually setting any values (change name?)
+     */
     public function setModel() {
         $this->model->set($this->inputValues);
         return $this->model->inputCheck();

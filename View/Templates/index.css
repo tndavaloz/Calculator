@@ -8,7 +8,7 @@
 table
 {
     margin-top:100px;
-    margin-right:500px;
+    margin-left:250px;
 }
 
 body
@@ -25,4 +25,11 @@ body
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
     font-size: 3em;
+}
+div
+{
+    font-style: normal;
+    position: fixed;
+    top: 350px;
+    left: 600px;
 }

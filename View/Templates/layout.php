@@ -5,7 +5,7 @@
 </head>
 <body>
 <form method="POST" action="/">
-    <table cellpadding=30px align=center>
+    <table cellpadding=30px>
         <tr>
             <td id="title" align=center colspan=2>CALCULATOR</td>
         </tr>

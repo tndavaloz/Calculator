@@ -66,7 +66,7 @@ class CalculatorModel {
                 $this->operationModel = new AddModel;
                 break;
             default:
-                return 'Please select an operator';
+                return 'Please select an operator.';
         }
         return 1;
     }
