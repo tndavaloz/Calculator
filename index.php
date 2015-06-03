@@ -9,10 +9,19 @@ $app = new \Slim\Slim(array(
     )
 );
 
+
+
 $app->get('/', function () use($app) {
     $calcModel = new CalculatorModel();
     $calcView = new CalculatorView();
-    $calculatorController = new CalculatorController($calcModel, $calcView);
+    $calculatorController = new CalculatorController($calcModel, $calcView, $app->request);
+    $calculatorController();
+});
+
+$app->post('/', function () use($app) {
+    $calcModel = new CalculatorModel();
+    $calcView = new CalculatorView();
+    $calculatorController = new CalculatorController($calcModel, $calcView, $app->request);
     $calculatorController();
 });
 
