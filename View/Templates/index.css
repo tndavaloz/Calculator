@@ -1,14 +1,10 @@
 .xy
 {
+    top: 350px;
+    left: 600px;
     font-size:1.4em;
     font-weight:bold;
     color:black;
-}
-
-table
-{
-    margin-top:100px;
-    margin-left:250px;
 }
 
 body
@@ -19,17 +15,10 @@ body
 }
 
 
-#title
+.title
 {
-    color: white;
-    -webkit-text-stroke-width: 1px;
+    color: darkblue;
+    -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: black;
-    font-size: 3em;
-}
-div
-{
-    font-style: normal;
-    position: fixed;
-    top: 350px;
-    left: 600px;
+    font-size: 4em;
 }

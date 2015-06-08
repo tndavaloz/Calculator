@@ -1,49 +1,28 @@
+<?php $view = new CalculatorView(); ?>
+
 <html>
 <head>
     <link href="/View/Templates/index.css" type="text/css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Alegreya:700italic,400' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<?php include_once(__DIR__ . '/../CalculatorView.php'); ?>
+
 <form method="POST" action="/">
-    <table cellpadding=30px>
-        <tr>
-            <td id="title" align=center colspan=2>CALCULATOR</td>
-        </tr>
-        <tr>
-            <td class="xy" align=center colspan=2>
-
-                <label for="X Value">X Value:</label>
-                <input type="text" name="xValue" id="X Value" required/>
-
-            </td>
-        </tr>
-        <tr>
-            <td class="xy" align=center colspan=2>
-
-                <label for="Y Value">Y Value:</label>
-                <input type="text" name="yValue" id="Y Value" required/>
-            </td>
-        </tr>
-        <tr>
-            <td align=center width=100px>
-                <input type="radio" name="operator" value="add">Addition
-            </td>
-            <td align=center width=100px>
-                <input type="radio" name="operator" value="subtract">Subtract
-            </td>
-        </tr>
-        <tr>
-            <td align=center width=100px>
-                <input type="radio" name="operator" value="multiply">Multiply
-            </td>
-            <td align=center width=100px>
-                <input type="radio" name="operator" value="divide">Divide
-            </td>
-        </tr>
-        <tr>
-            <td align=center colspan=2>
-                <input type="submit" name="submit" value="Submit">
-        </tr>
-    </table>
+    <div class='title' align="center">CALCULATOR</div>
+    <div class ='xy' align="center">
+        <?php $view->getX(); ?>
+        <?php $view->getY(); ?>
+    </div>
+    <div class="answerTitle" align="center">ANSWER:</div>
+    <div class="answer" align="center">
+        <?php $view->output(); ?>
+    </div>
+    <div class="operator" align="center">
+        <?php $view->getOperator(); ?>
+    </div>
+    <div class="Submit" align="center">
+        <?php $view->submit(); ?>
+    </div>
 </form>
 </body></html>

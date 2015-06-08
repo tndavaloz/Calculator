@@ -20,13 +20,13 @@ class CalculatorController {
     }
 
     public function __invoke() {
-        $this->getView();
-        $this->output = $this->getModel();
+        $view = $this->view;
+        $stml = function() use($view) {
+            require_once(__DIR__ . '/../View/Templates/layout.php');
+        };
 
-        if ($this->output != null) {
-            $this->view->outputView($this->output);
-        }
-
+        $this->model->assignModel($view->xVal, $view->yVal, $view->operator);
+        $stml();
     }
 
     /*
