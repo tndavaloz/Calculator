@@ -10,7 +10,20 @@ class CalculatorModel {
     public $operationModel;
     public $xVal;
     public $yVal;
+    public $operation;
     public $inputValues;
+
+    public function getX($x) {
+        $this->xVal = $x;
+    }
+
+    public function getY($y) {
+        $this->yVal = $y;
+    }
+
+    public function getOp($op) {
+        $this->operation = $op;
+    }
 
     public function isOperationSet() {
         if ($this->operationModel != null) {
@@ -38,10 +51,12 @@ class CalculatorModel {
     }
 
     public function assignModel($x, $y, $operator) {
+        if (!isset($x) || !isset($y) || !isset($operator)) {
+            return null;
+        }
         $this->xVal = $x;
         $this->yVal = $y;
         $this->operationModel = null;
-
         if (!$this->validateValues()) {
             // return something to let user know of an invalid entry
             return 'Invalid entry. Please try again.';
@@ -72,9 +87,14 @@ class CalculatorModel {
     }
 
 
-    public function performCalculation() {
+    public function performCalculation($yesOrNo) {
+        if ($yesOrNo != 1) {
+            return $yesOrNo;
+        }
         if ($this->isOperationSet()) {
             return $this->operationModel->calculate($this->xVal, $this->yVal);
+        } else {
+            return $yesOrNo;
         }
     }
 

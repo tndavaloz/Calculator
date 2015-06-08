@@ -2,41 +2,67 @@
 <?php
 
 class CalculatorView {
-    public $xVal;
-    public $yVal;
-    public $operator;
     public $outputValue;
+
+
 
     public function __construct() {}
 
     public function getX() {
-        echo '<label for="X Value">X Value:</label>
-        <input type="text" name=' . $this->xVal . '"xValue" id="X Value" required/>';
+        return '<label for="xValue">X Value:</label>
+        <input type="text" name="xInput" class="xValue" value="' . $this->setX() . '" required />';
     }
 
     public function getY() {
-        echo '<label for="Y Value">Y Value:</label>
-        <input type="text" name=' . $this->yVal . '"yValue" id="Y Value" required/>';
+        return '<label for="yValue">Y Value:</label>
+        <input type="text" name="yInput" class="yValue" value="' . $this->setY() . '"required/>';
     }
 
     public function getOperator() {
-        echo '<input type="radio" name=' . $this->operator . 'value="add">Addition';
-        echo '<input type="radio" name=' . $this->operator . 'value="subtract">Subtract';
-        echo '<input type="radio" name=' . $this->operator . 'value="multiply">Multiply';
-        echo '<input type="radio" name=' . $this->operator . 'value="divide">Divide';
+        $operators = array
+        (
+            'add' => 'Addition',
+            'subtract' => 'Subtract',
+            'multiply' => 'Multiply',
+            'divide' => 'Divide'
+        );
+        $outputString = "";
+        $format = '<input type="radio" name="operator" value="%s"%s>%s</input>';
+        foreach ($operators as $op => $fullOp) {
+            if (isset($_POST['operator'])) {
+                if ($_POST['operator'] == $op) {
+                    $outputString .= sprintf($format, $op, ' checked', $fullOp);
+                    continue;
+                }
+            }
+            $outputString .= sprintf($format, $op, '', $fullOp);
+        }
+        return $outputString;
     }
 
     public function submit() {
-        echo '<input type="submit" name="submit" value="Submit">';
+        return '<input type="submit" class="submit" value="Submit">';
+    }
+
+    public function setOutput($returnVal) {
+        $this->outputValue = $returnVal;
     }
 
     public function output() {
-
-        echo $this->outputValue;
+        return $this->outputValue;
     }
 
-//    public function setView() {
-//        require_once(__DIR__ . '/Templates/layout.php');
-//    }
+    public function setX() {
+        if (isset($_POST['xInput'])) {
+            return $_POST['xInput'];
+        }
+    }
+
+    public function setY() {
+        if (isset($_POST['yInput'])) {
+            return $_POST['yInput'];
+        }
+    }
+
 
 }
