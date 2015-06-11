@@ -3,6 +3,12 @@
 		   "phpunit/phpunit": "4.*"
 		   },
 	"require": {
-		"slim/slim": "~2.6"
-	}
+		"slim/slim": "~2.6",
+		"twig/twig": "1.18.2"
+	},
+    "autoload": {
+      "psr-0": {
+        "Calculator": "srcgit add"
+      }
+    }
 }
