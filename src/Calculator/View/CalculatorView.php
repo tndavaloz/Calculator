@@ -2,20 +2,42 @@
 
 namespace Calculator\View;
 
-class CalculatorView {
+use Twig_Environment;
 
+class CalculatorView {
+    public $twig;
     public $outputValue;
 
-    public function __construct() {}
-
-    public function getX() {
-        return '<label for="xValue">X Value:</label>
-        <input type="text" name="xInput" class="xValue" value="' . $this->setX() . '" required />';
+    public function __construct(Twig_Environment $twig) {
+        $this->twig = $twig;
     }
 
-    public function getY() {
-        return '<label for="yValue">Y Value:</label>
-        <input type="text" name="yInput" class="yValue" value="' . $this->setY() . '"required/>';
+    public function __invoke() {
+//        $that = $this;
+        $getX = new \Twig_SimpleFilter('getX', 'getX');//, function () use($that) {
+//            $that->getX();
+//        });
+        $this->twig->addFilter($getX);
+
+        $getY = new \Twig_SimpleFilter('getY', 'getY');//, function () use($that) {
+//            $that->getY();
+//        });
+        $this->twig->addFilter($getY);
+
+        $operator = new \Twig_SimpleFunction('getOperator', 'getOperator');//, function () use($that) {
+//            $that->getOperator();
+//        });
+        $this->twig->addFunction($operator);
+
+        $output = new \Twig_SimpleFunction('output', 'output');//, function() use($that) {
+//            $that->output();
+//        });
+        $this->twig->addFunction($output);
+        $blah = $this->twig->loadTemplate('layout.twig');
+        $blah->display([], ['getX', 'getY', 'getOperator']);
+//        var_dump($blah->getEnvironment());
+
+//        echo $this->twig->render('layout.twig');
     }
 
     public function getOperator() {
@@ -40,10 +62,6 @@ class CalculatorView {
         return $outputString;
     }
 
-    public function submit() {
-        return '<input type="submit" class="submit" value="Submit">';
-    }
-
     public function setOutput($returnVal) {
         $this->outputValue = $returnVal;
     }
@@ -52,17 +70,18 @@ class CalculatorView {
         return $this->outputValue;
     }
 
-    public function setX() {
+    public function getX() {
+        var_dump($_POST['xInput']);
         if (isset($_POST['xInput'])) {
             return $_POST['xInput'];
         }
+        return '';
     }
 
-    public function setY() {
+    public function getY() {
         if (isset($_POST['yInput'])) {
             return $_POST['yInput'];
         }
+        return '';
     }
-
-
 }

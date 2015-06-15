@@ -13,21 +13,19 @@ class CalculatorController {
     public $model;
     public $view;
     public $route;
-    public $inputValues;
-    public $output;
 
 
     public function __construct(CalculatorModel $model, CalculatorView $view, Request $router) {
         $this->model = $model;
         $this->view = $view;
         $this->route = $router;
+
     }
 
     public function __invoke() {
         $view = $this->view;
-        $lyt = function() use($view) {
-            require_once(__DIR__ . '/View/Templates/layout.php');
-        };
+
+        $view();
 
         $modelOutput = $this->model->assignModel(
             $this->route->post("xInput"),
@@ -36,8 +34,6 @@ class CalculatorController {
         );
 
         $view->setOutput($this->model->performCalculation($modelOutput));
-
-        $lyt();
     }
 
 }
