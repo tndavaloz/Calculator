@@ -13,28 +13,30 @@ class CalculatorView {
     }
 
     public function __invoke() {
+
+//        $this->twig->
 //        $that = $this;
-        $getX = new \Twig_SimpleFilter('getX', 'getX');//, function () use($that) {
+//        $getX = new \Twig_SimpleFilter('getX',function () use($that) {
 //            $that->getX();
 //        });
-        $this->twig->addFilter($getX);
-
-        $getY = new \Twig_SimpleFilter('getY', 'getY');//, function () use($that) {
+//        $this->twig->addFilter($getX);
+//
+//        $getY = new \Twig_SimpleFilter('getY', function () use($that) {
 //            $that->getY();
 //        });
-        $this->twig->addFilter($getY);
-
-        $operator = new \Twig_SimpleFunction('getOperator', 'getOperator');//, function () use($that) {
+//        $this->twig->addFilter($getY);
+//
+//        $operator = new \Twig_SimpleFunction('getOperator', function () use($that) {
 //            $that->getOperator();
 //        });
-        $this->twig->addFunction($operator);
-
-        $output = new \Twig_SimpleFunction('output', 'output');//, function() use($that) {
+//        $this->twig->addFunction($operator);
+//
+//        $output = new \Twig_SimpleFunction('output', function() use($that) {
 //            $that->output();
 //        });
-        $this->twig->addFunction($output);
+//        $this->twig->addFunction($output);
         $blah = $this->twig->loadTemplate('layout.twig');
-        $blah->display([], ['getX', 'getY', 'getOperator']);
+        $blah->display(['getX' => $this->getX()]);
 //        var_dump($blah->getEnvironment());
 
 //        echo $this->twig->render('layout.twig');
@@ -71,11 +73,7 @@ class CalculatorView {
     }
 
     public function getX() {
-        var_dump($_POST['xInput']);
-        if (isset($_POST['xInput'])) {
-            return $_POST['xInput'];
-        }
-        return '';
+        return $_POST;
     }
 
     public function getY() {
