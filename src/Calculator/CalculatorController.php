@@ -25,7 +25,9 @@ class CalculatorController {
     public function __invoke() {
         $view = $this->view;
 
-        $view();
+        $lyt = function() use($view) {
+            $view();
+        };
 
         $modelOutput = $this->model->assignModel(
             $this->route->post("xInput"),
@@ -33,7 +35,9 @@ class CalculatorController {
             $this->route->post("operator")
         );
 
-        $view->setOutput($this->model->performCalculation($modelOutput));
+        $view->setOutput($this->model->performCalculation($modelOutput), $this->route->post("operator"));
+
+        $lyt();
     }
 
 }
