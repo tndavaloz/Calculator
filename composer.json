@@ -3,6 +3,13 @@
 		   "phpunit/phpunit": "4.*"
 		   },
 	"require": {
-		"slim/slim": "~2.6"
-	}
+		"slim/slim": "~2.6",
+		"twig/twig": "1.18.2",
+		"slim/views": "0.1.*"
+	},
+    "autoload": {
+      "psr-0": {
+        "Calculator": "src"
+      }
+    }
 }
