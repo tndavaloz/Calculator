@@ -2,7 +2,7 @@ services:
 
   #Calculator View
 
-  src.calculator.view.view:
-    class: Calculator\View\Templates\CalculatorView
+  src.calculator.view:
+    class: Calculator\View\CalculatorView
     arguments:
       - @twig.environment

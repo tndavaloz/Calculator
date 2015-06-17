@@ -2,11 +2,6 @@
 
 require '../vendor/autoload.php';
 
-
-use Calculator\Model\CalculatorModel;
-use Calculator\View\CalculatorView;
-use Calculator\CalculatorController;
-
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -25,18 +20,15 @@ $container->set('templates', __DIR__ . '/../src/Calculator/View/Templates');
 $container->set('slim.request', $app->request);
 $container->compile();
 
-$app->get('/', function () use($app, $twig) {
-    $calcModel = new CalculatorModel();
-    $calcView = new CalculatorView($twig);
-    $calculatorController = new CalculatorController($calcModel, $calcView, $app->request);
+$app->get('/', function () use($container) {
+    /** @var Callable $calculatorController */
+    $calculatorController = $container->get('src.calculator.controller');
     $calculatorController();
 });
 
-
-$app->post('/', function () use($app, $twig) {
-    $calcModel = new CalculatorModel();
-    $calcView = new CalculatorView($twig);
-    $calculatorController = new CalculatorController($calcModel, $calcView, $app->request);
+$app->post('/', function () use($container) {
+    /** @var Callable $calculatorController */
+    $calculatorController = $container->get('src.calculator.controller');
     $calculatorController();
 });
 
