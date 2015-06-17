@@ -1,4 +1,17 @@
 services:
 
-  slim.slim.request:          {synthetic: true}
-  twig.environment:           {synthetic: true}
+  templates:                       {synthetic: true}
+
+  slim.request:          {synthetic: true}
+
+  twig.loader:
+    class:  Twig_Loader_Filesystem
+    arguments:
+        - @templates
+
+  twig.environment:
+     class: Twig_Environment
+     arguments:
+        - @twig.loader
+
+

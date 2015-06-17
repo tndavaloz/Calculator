@@ -3,7 +3,7 @@ services:
   #Calculator Controller
 
   src.calculator.controller:
-    class: src\Calculator\CalculatorController
+    class: Calculator\CalculatorController
     arguments:
       - @src.calculator.model.model
       - @src.calculator.view.view
