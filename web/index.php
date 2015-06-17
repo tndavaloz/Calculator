@@ -12,10 +12,10 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 
 $container = new ContainerBuilder();
-$loader = new YamlFileLoader($container, new FileLocator(__DIR__));
-$loader->load('../config/config.yml');
+$di = new YamlFileLoader($container, new FileLocator(__DIR__));
+$di->load('../config/config.yml');
 
-
+$di->compile();
 
 Twig_Autoloader::register();
 
@@ -27,6 +27,8 @@ $app = new \Slim\Slim(array(
         'debug' => true
     )
 );
+
+
 
 $app->get('/', function () use($app, $twig) {
     $calcModel = new CalculatorModel();

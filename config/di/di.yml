@@ -1,0 +1,4 @@
+services:
+
+  slim.slim.request:          {synthetic: true}
+  twig.environment:           {synthetic: true}
