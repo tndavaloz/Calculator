@@ -3,5 +3,9 @@ services:
   #Calculator Controller
 
   src.calculator.controller:
-    class: src\Calculator\CalculatorController
+    class: Calculator\CalculatorController
+    arguments:
+      - @src.calculator.model
+      - @src.calculator.view
+      - @slim.request
 

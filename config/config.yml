@@ -3,3 +3,4 @@ imports:
   - resource: di/models.yml
   - resource: di/routes.yml
   - resource: di/views.yml
+  - resource: di/di.yml
