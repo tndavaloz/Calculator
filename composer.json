@@ -5,8 +5,11 @@
 	"require": {
 		"slim/slim": "~2.6",
 		"twig/twig": "1.18.2",
-		"slim/views": "0.1.*"
-	},
+		"slim/views": "0.1.*",
+		"symfony/yaml": "~2.7",
+		"symfony/dependency-injection": "~2.7",
+		"symfony/config": "~2.7"
+    },
     "autoload": {
       "psr-0": {
         "Calculator": "src"

@@ -1,0 +1,5 @@
+imports:
+  - resource: di/controller.yml
+  - resource: di/models.yml
+  - resource: di/routes.yml
+  - resource: di/views.yml

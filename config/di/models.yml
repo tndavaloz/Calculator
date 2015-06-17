@@ -1,0 +1,6 @@
+services:
+
+  #Calculator Model
+
+  src.calculator.model.model:
+    class: src\Calculator\Model\CalculatorModel
