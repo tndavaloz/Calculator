@@ -1,0 +1,7 @@
+services:
+
+  #Calculator Controller
+
+  src.calculator.controller:
+    class: src\Calculator\CalculatorController
+
