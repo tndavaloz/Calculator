@@ -1,8 +1,8 @@
 services:
 
-  templates:                       {synthetic: true}
+  templates:        {synthetic: true}
 
-  slim.request:          {synthetic: true}
+  slim.request:     {synthetic: true}
 
   twig.loader:
     class:  Twig_Loader_Filesystem
