@@ -31,5 +31,4 @@ $app->post('/', function () use($calculatorController) {
     $calculatorController();
 });
 
-
 $app->run();
