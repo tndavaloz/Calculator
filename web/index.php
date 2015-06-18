@@ -20,15 +20,14 @@ $container->set('templates', __DIR__ . '/../src/Calculator/View/Templates');
 $container->set('slim.request', $app->request);
 $container->compile();
 
-$app->get('/', function () use($container) {
-    /** @var Callable $calculatorController */
-    $calculatorController = $container->get('src.calculator.controller');
+/** @var Callable $calculatorController */
+$calculatorController = $container->get('src.calculator.controller');
+
+$app->get('/', function () use($calculatorController) {
     $calculatorController();
 });
 
-$app->post('/', function () use($container) {
-    /** @var Callable $calculatorController */
-    $calculatorController = $container->get('src.calculator.controller');
+$app->post('/', function () use($calculatorController) {
     $calculatorController();
 });
 
