@@ -1,0 +1,21 @@
+{% extends 'layout.twig' %}
+
+{% block title %}Calculator{% endblock title %}
+
+{% block content %}
+<strong>QL Intern Project: Calculator</strong>
+<h2>Calculator</h2>
+
+<p>This is the first project that I have been working on at QL. The main points of this project have been to set up a server and get some code up and running.</p>
+<form method="POST" action="/">
+    <fieldset>
+        <input type="text" name="xInput" placeholder="X" value='{{ XY.xInput }}' required />
+        <input type="text" name="yInput" placeholder="Y" value='{{ XY.yInput }}' required />
+        <input type="text" name="output" placeholder="Answer" value='{{ answer }}' />
+        {% for id, operator in operation %}
+            <input type="radio" name="operator" value="{{ id }}" />{{ operator }}
+        {% endfor %}
+    </fieldset>
+    <input type="submit" class="button">
+</form>
+{% endblock content %}

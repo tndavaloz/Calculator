@@ -24,7 +24,7 @@ class CalculatorView {
     public function __invoke()
     {
 
-        $output = $this->twig->loadTemplate('layout.twig');
+        $output = $this->twig->loadTemplate('calculator.twig');
         $output->display(['XY' => $this->getXY(),
             'operation' => $this->operators,
             'answer' => $this->getOutput()
