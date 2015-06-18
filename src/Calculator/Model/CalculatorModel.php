@@ -10,22 +10,8 @@ class CalculatorModel {
     public $operation;
     public $inputValues;
 
-    public function __construct() {}
-
-    public function getX($x) {
-        $this->xVal = $x;
-    }
-
-    public function getY($y) {
-        $this->yVal = $y;
-    }
-
-    public function getOp($op) {
-        $this->operation = $op;
-    }
-
     public function isOperationSet() {
-        if ($this->operationModel != null) {
+        if (null != $this->operationModel) {
             return true;
         }
         return false;
@@ -33,17 +19,6 @@ class CalculatorModel {
 
     public function validateValues() {
         if (!is_numeric($this->xVal) || !is_numeric($this->yVal)) {
-            return false;
-        }
-        return true;
-    }
-
-    public function set(array $viewInput) {
-        $this->inputValues = $viewInput;
-    }
-
-    public function inputCheck() {
-        if ($this->inputValues['X'] == NULL) {
             return false;
         }
         return true;
@@ -84,7 +59,6 @@ class CalculatorModel {
         }
         return 1;
     }
-
 
     public function performCalculation($yesOrNo) {
         if ($yesOrNo != 1) {
