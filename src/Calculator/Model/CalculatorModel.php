@@ -31,6 +31,7 @@ class CalculatorModel {
         $this->xVal = $x;
         $this->yVal = $y;
         $this->operationModel = null;
+
         if (!$this->validateValues()) {
             // return something to let user know of an invalid entry
             return 'Invalid entry. Please try again.';
@@ -41,22 +42,30 @@ class CalculatorModel {
                 return 'Cannot divide by 0. Enter a valid denominator or choose a different operation.';
             }
         }
-        switch($operator) {
-            case 'divide':
-                $this->operationModel = new DivideModel();
-                break;
-            case 'multiply':
-                $this->operationModel = new MultiplyModel();
-                break;
-            case 'subtract':
-                $this->operationModel = new SubtractModel();
-                break;
-            case 'add':
-                $this->operationModel = new AddModel();
-                break;
-            default:
-                return 'Please select an operator.';
+//        switch($operator) {
+//            case 'divide':
+//                $this->operationModel = new DivideModel();
+//                break;
+//            case 'multiply':
+//                $this->operationModel = new MultiplyModel();
+//                break;
+//            case 'subtract':
+//                $this->operationModel = new SubtractModel();
+//                break;
+//            case 'add':
+//                $this->operationModel = new AddModel();
+//                break;
+//            default:
+//                return 'Please select an operator.';
+//        }
+        if (null == $operator) {
+            return 'Please select an operator.';
         }
+        else {
+            $model = new ModelFactory();
+            $this->operationModel = $model->getModel();
+        }
+
         return 1;
     }
 

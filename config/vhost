@@ -18,7 +18,7 @@ server {
         }
 
         try_files   $uri    /index.php?$query_string;
-        fastcgi_param                 PATH_APP              /www/MyQL-Origination/;
+        fastcgi_param                 PATH_APP              /www/calculator/;
         fastcgi_param                 QUERY_STRING          $original_query_string;
         fastcgi_param                 REDIRECT_QUERY_STRING $original_query_string;
         fastcgi_buffer_size           128k;
