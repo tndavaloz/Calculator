@@ -48,7 +48,7 @@ class DivideModel implements CalculatorInterface {
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
             $this->addError(self::ALPHABET_ERROR_MESSAGE);
-        } else if (0 === $this->y) {
+        } else if (0 == $this->y) {
             $this->addError(self::UNDEFINED_ERROR_MESSAGE);
         } else {
             $this->addError(NULL);
