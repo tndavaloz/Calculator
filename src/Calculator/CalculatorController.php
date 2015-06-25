@@ -2,7 +2,7 @@
 
 namespace Calculator;
 
-use Calculator\Model\CalculatorModel;
+use Calculator\Model\ModelFactory;
 use Calculator\View\CalculatorView;
 use Slim\Http\Request;
 
@@ -12,13 +12,11 @@ class CalculatorController {
 
     public $model;
     public $view;
-    public $route;
 
 
-    public function __construct(CalculatorModel $model, CalculatorView $view, Request $router) {
+    public function __construct(ModelFactory $model, CalculatorView $view) {
         $this->model = $model;
         $this->view = $view;
-        $this->route = $router;
 
     }
 
@@ -29,13 +27,11 @@ class CalculatorController {
             $view();
         };
 
-        $modelOutput = $this->model->assignModel(
-            $this->route->post("xInput"),
-            $this->route->post("yInput"),
-            $this->route->post("operator")
-        );
+        $model = $this->model->getModel();
 
-        $view->setOutput($this->model->performCalculation($modelOutput), $this->route->post("operator"));
+        if ($model != false) {
+            $view->setOutput($model->calculate(), $model->getOperation());
+        }
 
         $lyt();
     }

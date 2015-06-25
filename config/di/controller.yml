@@ -5,7 +5,6 @@ services:
   src.calculator.controller:
     class: Calculator\CalculatorController
     arguments:
-      - @src.calculator.model
+      - @src.calculator.model.modelfactory
       - @src.calculator.view
-      - @slim.request
 

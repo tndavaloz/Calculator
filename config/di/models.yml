@@ -2,5 +2,7 @@ services:
 
   #Calculator Model
 
-  src.calculator.model:
-    class: Calculator\Model\CalculatorModel
+  src.calculator.model.modelfactory:
+    class: Calculator\Model\ModelFactory
+    arguments:
+      - @slim.request

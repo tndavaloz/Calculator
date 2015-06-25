@@ -8,5 +8,7 @@ interface CalculatorInterface {
 
     public function getErrors();
 
+    public function getOperation();
+
     public function isValidInput();
 }

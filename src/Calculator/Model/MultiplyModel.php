@@ -39,6 +39,10 @@ class MultiplyModel implements CalculatorInterface {
         return $this->error;
     }
 
+    public function getOperation() {
+        return 'multiply';
+    }
+
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {

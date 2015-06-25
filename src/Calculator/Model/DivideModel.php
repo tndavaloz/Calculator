@@ -40,6 +40,10 @@ class DivideModel implements CalculatorInterface {
         return $this->error;
     }
 
+    public function getOperation() {
+        return 'divide';
+    }
+
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
