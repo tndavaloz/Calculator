@@ -13,20 +13,39 @@ class ModelFactory {
         $this->request = $request;
     }
 
-    public function createAddModel() {
+    public function createAddModel()
+    {
         return new AddModel($this->request);
     }
 
-    public function getModel() {
-        switch($this->request->post('oeprator')) {
-            case 'addition':
+    public function createSubtractModel()
+    {
+        return new SubtractModel($this->request);
+    }
+
+    public function createDivideModel()
+    {
+        return new DivideModel($this->request);
+    }
+
+    public function createMultiplyModel()
+    {
+        return new MultiplyModel($this->request);
+    }
+
+    public function getModel()
+    {
+        switch($this->request->post('operator')) {
+            case 'add':
                 return $this->createAddModel();
+            case 'subtract':
+                return $this->createSubtractModel();
+            case 'multiply':
+                return $this->createMultiplyModel();
+            case 'divide':
+                return $this->createDivideModel();
             default:
                 return false;
         }
-
     }
-
-
-
 }
