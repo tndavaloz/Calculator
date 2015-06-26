@@ -6,3 +6,7 @@ services:
     class: Calculator\Model\ModelFactory
     arguments:
       - @slim.request
+  src.calculator.model.modelerrorfactory:
+    class: Calculator\Model\ModelErrorFactory
+    arguments:
+      - @slim.request

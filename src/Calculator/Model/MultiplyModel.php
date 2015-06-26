@@ -6,10 +6,8 @@ use Slim\Http\Request;
 
 class MultiplyModel implements CalculatorInterface {
 
-    const ALPHABET_ERROR_MESSAGE = 'INVALID ENTRY; ONLY NUMERICAL AND HEX VALUES ALLOWED';
     private $x;
     private $y;
-    private $error;
 
     public function __construct(Request $request)
     {
@@ -24,17 +22,7 @@ class MultiplyModel implements CalculatorInterface {
         if ($this->isValidInput()) {
             return $this->x * $this->y;
         }
-        return $this->getError();
-    }
-
-    public function setError($error)
-    {
-        $this->error = $error;
-    }
-
-    public function getError()
-    {
-        return $this->error;
+        return false;
     }
 
     public function getOperation() {
@@ -44,7 +32,6 @@ class MultiplyModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
-            $this->setError(self::ALPHABET_ERROR_MESSAGE);
             return false;
         } else {
             return true;

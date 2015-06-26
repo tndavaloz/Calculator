@@ -6,11 +6,8 @@ use Slim\Http\Request;
 
 class DivideModel implements CalculatorInterface {
 
-    const UNDEFINED_ERROR_MESSAGE = 'DIVIDING BY ZERO (0) IS UNDEFINED';
-    const ALPHABET_ERROR_MESSAGE = 'INVALID ENTRY; ONLY NUMERICAL AND HEX VALUES ALLOWED';
     private $x;
     private $y;
-    private $error;
 
     public function __construct(Request $request)
     {
@@ -25,17 +22,7 @@ class DivideModel implements CalculatorInterface {
         if ($this->isValidInput()) {
             return $this->x / $this->y;
         }
-        return $this->getError();
-    }
-
-    public function setError($error)
-    {
-        $this->error = $error;
-    }
-
-    public function getError()
-    {
-        return $this->error;
+        return false;
     }
 
     public function getOperation() {
@@ -45,10 +32,8 @@ class DivideModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
-            $this->setError(self::ALPHABET_ERROR_MESSAGE);
             return false;
         } else if (0 == $this->y) {
-            $this->setError(self::UNDEFINED_ERROR_MESSAGE);
             return false;
         } else {
             return true;
