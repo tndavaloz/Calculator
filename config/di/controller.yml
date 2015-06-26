@@ -7,4 +7,5 @@ services:
     arguments:
       - @src.calculator.model.modelfactory
       - @src.calculator.view
+      - @src.calculator.model.modelerrorfactory
 
