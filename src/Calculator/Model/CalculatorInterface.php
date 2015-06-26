@@ -6,7 +6,9 @@ interface CalculatorInterface {
 
     public function calculate();
 
-    public function getErrors();
+    public function setError($error);
+
+    public function getError();
 
     public function getOperation();
 

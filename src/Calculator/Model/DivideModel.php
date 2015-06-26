@@ -22,20 +22,18 @@ class DivideModel implements CalculatorInterface {
 
     public function calculate()
     {
-        $this->isValidInput();
-
-        if (NULL == $this->getErrors()) {
+        if ($this->isValidInput()) {
             return $this->x / $this->y;
         }
-        return $this->getErrors();
+        return $this->getError();
     }
 
-    private function addError($error)
+    public function setError($error)
     {
         $this->error = $error;
     }
 
-    public function getErrors()
+    public function getError()
     {
         return $this->error;
     }
@@ -47,11 +45,13 @@ class DivideModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
-            $this->addError(self::ALPHABET_ERROR_MESSAGE);
+            $this->setError(self::ALPHABET_ERROR_MESSAGE);
+            return false;
         } else if (0 == $this->y) {
-            $this->addError(self::UNDEFINED_ERROR_MESSAGE);
+            $this->setError(self::UNDEFINED_ERROR_MESSAGE);
+            return false;
         } else {
-            $this->addError(NULL);
+            return true;
         }
     }
 }

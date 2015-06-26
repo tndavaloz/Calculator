@@ -4,8 +4,6 @@ namespace Calculator;
 
 use Calculator\Model\ModelFactory;
 use Calculator\View\CalculatorView;
-use Slim\Http\Request;
-
 
 
 class CalculatorController {
