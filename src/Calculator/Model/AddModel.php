@@ -6,6 +6,11 @@ use Slim\Http\Request;
 
 class AddModel implements CalculatorInterface {
 
+    /**
+     * @var string
+     */
+    const OPERATION = 'add';
+
     private $x;
     private $y;
 
@@ -13,8 +18,6 @@ class AddModel implements CalculatorInterface {
     {
         $this->x = $request->post('xInput');
         $this->y = $request->post('yInput');
-
-        $this->isValidInput();
     }
 
     public function calculate()
@@ -26,15 +29,14 @@ class AddModel implements CalculatorInterface {
     }
 
     public function getOperation() {
-        return 'add';
+        return self::OPERATION;
     }
 
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
             return false;
-        } else {
-            return true;
         }
+        return true;
     }
 }

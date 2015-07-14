@@ -6,6 +6,11 @@ use Slim\Http\Request;
 
 class DivideModel implements CalculatorInterface {
 
+    /**
+     * @var string
+     */
+    const OPERATOR = 'divide';
+
     private $x;
     private $y;
 
@@ -26,7 +31,7 @@ class DivideModel implements CalculatorInterface {
     }
 
     public function getOperation() {
-        return 'divide';
+        return self::OPERATOR;
     }
 
     public function isValidInput()
