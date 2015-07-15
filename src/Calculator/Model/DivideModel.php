@@ -40,8 +40,8 @@ class DivideModel implements CalculatorInterface {
             return false;
         } else if (0 == $this->y) {
             return false;
-        } else {
-            return true;
         }
+        return true;
+
     }
 }

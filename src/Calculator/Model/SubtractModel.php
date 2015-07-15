@@ -6,6 +6,11 @@ use Slim\Http\Request;
 
 class SubtractModel implements CalculatorInterface {
 
+    /**
+     * @var string
+     */
+    const OPERATOR = 'subtract';
+
     private $x;
     private $y;
 
@@ -26,7 +31,7 @@ class SubtractModel implements CalculatorInterface {
     }
 
     public function getOperation() {
-        return 'subtract';
+        return self::OPERATOR;
     }
 
     public function isValidInput()

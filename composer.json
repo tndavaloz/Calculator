@@ -8,7 +8,8 @@
 		"slim/views": "0.1.*",
 		"symfony/yaml": "~2.7",
 		"symfony/dependency-injection": "~2.7",
-		"symfony/config": "~2.7"
+		"symfony/config": "~2.7",
+		"sebastian/environment": "~1.2"
     },
     "autoload": {
       "psr-0": {

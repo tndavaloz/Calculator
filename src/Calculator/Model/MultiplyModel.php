@@ -6,6 +6,11 @@ use Slim\Http\Request;
 
 class MultiplyModel implements CalculatorInterface {
 
+    /**
+     * @var string
+     */
+    const OPERATOR = 'multiply';
+
     private $x;
     private $y;
 
@@ -26,7 +31,7 @@ class MultiplyModel implements CalculatorInterface {
     }
 
     public function getOperation() {
-        return 'multiply';
+        return self::OPERATOR;
     }
 
     public function isValidInput()
