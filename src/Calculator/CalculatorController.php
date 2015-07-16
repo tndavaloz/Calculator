@@ -18,7 +18,6 @@ class CalculatorController {
         $this->model = $model;
         $this->view = $view;
         $this->errorModel = $errorModel;
-
     }
 
     public function __invoke() {

@@ -37,6 +37,7 @@ class MultiplyModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
+            // throw an error instead of return false
             return false;
         } else {
             return true;
