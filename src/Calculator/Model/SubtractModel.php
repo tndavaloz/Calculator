@@ -6,6 +6,8 @@ use Slim\Http\Request;
 
 class SubtractModel implements CalculatorInterface {
 
+    use ErrorTrait;
+
     /**
      * @var string
      */
@@ -27,7 +29,7 @@ class SubtractModel implements CalculatorInterface {
         if ($this->isValidInput()) {
             return $this->x - $this->y;
         }
-        return false;
+        return $this->getError();
     }
 
     public function getOperation() {
@@ -37,6 +39,7 @@ class SubtractModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
+            $this->setError(SubtractModel::ALPHABET_ERROR_MESSAGE);
             return false;
         } else {
             return true;

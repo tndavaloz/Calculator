@@ -6,9 +6,14 @@ use Slim\Http\Request;
 
 class DivideModel implements CalculatorInterface {
 
+    use ErrorTrait;
+
+    const UNDEFINED_ERROR_MESSAGE = 'DIVIDING BY ZERO (0) IS UNDEFINED';
+
     /**
      * @var string
      */
+
     const OPERATOR = 'divide';
 
     private $x;
@@ -27,7 +32,7 @@ class DivideModel implements CalculatorInterface {
         if ($this->isValidInput()) {
             return $this->x / $this->y;
         }
-        return false;
+        return $this->getError();
     }
 
     public function getOperation() {
@@ -37,8 +42,10 @@ class DivideModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
+            $this->setError(DivideModel::ALPHABET_ERROR_MESSAGE);
             return false;
         } else if (0 == $this->y) {
+            $this->setError(self::UNDEFINED_ERROR_MESSAGE);
             return false;
         }
         return true;

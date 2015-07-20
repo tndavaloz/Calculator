@@ -6,6 +6,8 @@ use Slim\Http\Request;
 
 class AddModel implements CalculatorInterface {
 
+    use ErrorTrait;
+
     /**
      * @var string
      */
@@ -25,7 +27,7 @@ class AddModel implements CalculatorInterface {
         if ($this->isValidInput()) {
             return $this->x + $this->y;
         }
-        return false;
+        return $this->getError();
     }
 
     public function getOperation() {
@@ -35,6 +37,7 @@ class AddModel implements CalculatorInterface {
     public function isValidInput()
     {
         if (!is_numeric($this->x) || !is_numeric($this->y)) {
+            $this->setError(AddModel::ALPHABET_ERROR_MESSAGE);
             return false;
         }
         return true;
