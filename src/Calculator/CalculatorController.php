@@ -18,7 +18,6 @@ class CalculatorController {
         $this->model = $model;
         $this->view = $view;
         $this->errorModel = $errorModel;
-
     }
 
     public function __invoke() {
@@ -31,13 +30,7 @@ class CalculatorController {
         $model = $this->model->getModel();
 
         if (false != $model) {
-            $valueReturned = $model->calculate();
-            if (false === $valueReturned) {
-                $error = $this->errorModel->getError();
-                $view->setOutput($error->getErrorMessage(), $model->getOperation());
-            } else {
-                $view->setOutput($valueReturned, $model->getOperation());
-            }
+            $view->setOutput($model->calculate(), $model->getOperation());
         }
 
         $lyt();
